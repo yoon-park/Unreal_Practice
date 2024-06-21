@@ -13,9 +13,6 @@ ATestPlayer::ATestPlayer()
 
 	SpringArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArmComponent"));
 	SpringArmComponent->bDoCollisionTest = false;
-	//FRotator Rot; // (Pitch = -30.000000, Yaw = 0.000000, Roll = 0.000000)
-	//Rot.Pitch = -30.000000;
-	//SpringArmComponent->SetRelativeRotation(Rot);
 	SpringArmComponent->TargetArmLength = 800.000000;
 	SpringArmComponent->SetupAttachment(RootComponent);
 
