@@ -11,10 +11,14 @@
  */
 
 UENUM(BlueprintType)
-enum class EPlayerAnimation : uint8
+enum class ETPSPlayerAnimation : uint8
 {
 	Idle UMETA(DisplayName = "Idle"),
-	Run UMETA(DisplayName = "Run"),
+	FrontRun UMETA(DisplayName = "FrontRun"),
+	BackRun UMETA(DisplayName = "BackRun"),
+	LeftRun UMETA(DisplayName = "LeftRun"),
+	RightRun UMETA(DisplayName = "RightRun"),
+	Jump UMETA(DisplayName = "Jump"),
 };
 
 UCLASS()

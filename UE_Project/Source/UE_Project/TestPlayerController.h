@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include "TestEnum.h"
 #include "TestPlayerController.generated.h"
 
 /**
@@ -14,4 +15,9 @@ class UE_PROJECT_API ATestPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 	
+public:
+	ATestPlayerController();
+
+	UFUNCTION(BlueprintCallable)
+	void ChangeAnimation(ETPSPlayerAnimation _Animation);
 };

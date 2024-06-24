@@ -25,7 +25,7 @@ ATestPlayer::ATestPlayer()
 void ATestPlayer::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	AnimationContext = Cast<UGlobalAnimInstance>(GetMesh()->GetAnimInstance());
 }
 
 // Called every frame
@@ -42,3 +42,14 @@ void ATestPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 
 }
 
+void ATestPlayer::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(ATestPlayer, AniValue);
+}
+
+void ATestPlayer::ChangeAnimation_Implementation(ETPSPlayerAnimation _Type)
+{
+	AniValue = _Type;
+}
