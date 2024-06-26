@@ -22,6 +22,13 @@ AFPVCharacter::AFPVCharacter()
 	CameraComponent->SetupAttachment(SpringArmComponent);
 	CameraComponent->SetProjectionMode(ECameraProjectionMode::Perspective);
 	CameraComponent->bUsePawnControlRotation = true;
+
+	FPVMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("FirstPersonMesh"));
+	FPVMesh->SetupAttachment(CameraComponent);
+	FPVMesh->SetOnlyOwnerSee(true);
+	GetMesh()->SetOwnerNoSee(true);
+	FPVMesh->bCastDynamicShadow = false;
+	FPVMesh->CastShadow = false;
 }
 
 // Called when the game starts or when spawned

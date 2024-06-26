@@ -15,6 +15,12 @@ public:
 	// Sets default values for this character's properties
 	AFPVCharacter();
 
+	UFUNCTION(BlueprintCallable)
+	bool GetJumpButtonPressed()
+	{
+		return bPressedJump;
+	}
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -27,6 +33,12 @@ public:
 	UPROPERTY(Category = "Contents", VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* CameraComponent = nullptr;
 
+	UPROPERTY(Category = "Contents", VisibleDefaultsOnly)
+	USkeletalMeshComponent* FPVMesh = nullptr;
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+private:
+	
 };
