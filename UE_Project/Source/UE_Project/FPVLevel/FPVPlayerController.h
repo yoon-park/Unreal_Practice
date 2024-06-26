@@ -17,21 +17,26 @@ class UE_PROJECT_API AFPVPlayerController : public APlayerController
 public:
 	AFPVPlayerController();
 
-	UFUNCTION(BlueprintCallable)
-	void MoveFrontCPP(const FInputActionValue& Value);
+	// Input
+	UPROPERTY()
+	class UInputActionDatas* InputData;
 
+	UFUNCTION(BlueprintCallable)
+	void SetupInputComponent() override;
+
+	// Actions
+	UFUNCTION(BlueprintCallable)
+	void MouseRotation(const FInputActionValue& Value);
+	UFUNCTION(BlueprintCallable)
+	void MoveFront(const FInputActionValue& Value);
 	UFUNCTION(BlueprintCallable)
 	void MoveFrontEnd(const FInputActionValue& Value);
-
 	UFUNCTION(BlueprintCallable)
-	void RotCPP(const FInputActionValue& Value);
+	void Jump(const FInputActionValue& Value);
+	UFUNCTION(BlueprintCallable)
+	void JumpEnd(const FInputActionValue& Value);
 
+	// Animation
 	//UFUNCTION(BlueprintCallable)
 	//void ChangeAnimation(ETPSPlayerAnimation _Animation);
-
-	//UFUNCTION(BlueprintCallable)
-	//void SetupInputComponent() override;
-
-	//UPROPERTY()
-	//class UInputActionDatas* InputData;
 };
