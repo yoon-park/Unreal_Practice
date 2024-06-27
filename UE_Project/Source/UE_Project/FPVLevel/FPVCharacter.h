@@ -36,6 +36,12 @@ public:
 	UPROPERTY(Category = "Contents", VisibleDefaultsOnly)
 	USkeletalMeshComponent* FPVMesh = nullptr;
 
+	UPROPERTY(Category = "Contents", VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	UStaticMeshComponent* WeaponMesh = nullptr;
+
+	UPROPERTY(Category = "Contents", VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	UStaticMeshComponent* FPVWeaponMesh = nullptr;
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 

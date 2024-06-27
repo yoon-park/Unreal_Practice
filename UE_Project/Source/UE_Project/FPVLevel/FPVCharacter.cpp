@@ -12,23 +12,38 @@ AFPVCharacter::AFPVCharacter()
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	// SpringArm Component
 	SpringArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArmComponent"));
 	SpringArmComponent->SetupAttachment(RootComponent);
 	SpringArmComponent->SetRelativeLocation(FVector(0.0f, 0.0f, 50.0f + BaseEyeHeight));
 	SpringArmComponent->TargetArmLength = 0.0f;
 	SpringArmComponent->bDoCollisionTest = false;
 
+	// Camera Component
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComponent"));
 	CameraComponent->SetupAttachment(SpringArmComponent);
 	CameraComponent->SetProjectionMode(ECameraProjectionMode::Perspective);
 	CameraComponent->bUsePawnControlRotation = true;
 
+	// Mesh
+	GetMesh()->SetOwnerNoSee(true);
+
+	WeaponMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("WeaponMesh"));
+	WeaponMesh->SetupAttachment(GetMesh(), "WeaponMesh");
+	WeaponMesh->SetOwnerNoSee(true);
+
+	// FPV Mesh
 	FPVMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("FirstPersonMesh"));
 	FPVMesh->SetupAttachment(CameraComponent);
 	FPVMesh->SetOnlyOwnerSee(true);
-	GetMesh()->SetOwnerNoSee(true);
 	FPVMesh->bCastDynamicShadow = false;
 	FPVMesh->CastShadow = false;
+
+	FPVWeaponMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("FPVWeaponMesh"));
+	FPVWeaponMesh->SetupAttachment(FPVMesh, "FPVWeaponMesh");
+	FPVWeaponMesh->SetOnlyOwnerSee(true);
+	FPVWeaponMesh->bCastDynamicShadow = false;
+	FPVWeaponMesh->CastShadow = false;
 }
 
 // Called when the game starts or when spawned

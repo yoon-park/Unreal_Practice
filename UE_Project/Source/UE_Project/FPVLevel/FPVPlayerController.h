@@ -30,11 +30,17 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void MoveFront(const FInputActionValue& Value);
 	UFUNCTION(BlueprintCallable)
-	void MoveFrontEnd(const FInputActionValue& Value);
+	void MoveBack(const FInputActionValue& Value);
+	UFUNCTION(BlueprintCallable)
+	void MoveRight(const FInputActionValue& Value);
+	UFUNCTION(BlueprintCallable)
+	void MoveLeft(const FInputActionValue& Value);
 	UFUNCTION(BlueprintCallable)
 	void Jump(const FInputActionValue& Value);
 	UFUNCTION(BlueprintCallable)
 	void JumpEnd(const FInputActionValue& Value);
+	UFUNCTION(BlueprintCallable)
+	void Fire(const FInputActionValue& Value);
 
 	// Animation
 	//UFUNCTION(BlueprintCallable)
